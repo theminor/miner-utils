@@ -1,0 +1,26 @@
+{
+  "name": "miner-utils",
+  "version": "0.0.1",
+  "description": "Utilities to interface with mining APIs such as cgminer, bfgminer, and others",
+  "main": "miner-utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theminor/miner-utils.git"
+  },
+  "keywords": [
+    "miner",
+    "mining",
+    "utilities",
+    "cgminer",
+    "bfgminer"
+  ],
+  "author": "theminor",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/theminor/miner-utils/issues"
+  },
+  "homepage": "https://github.com/theminor/miner-utils#readme"
+}
