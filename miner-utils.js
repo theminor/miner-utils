@@ -2,6 +2,7 @@
 const { connect } = require('net');
 const https = require('https');
 
+// fetch JSON or other data from a given url with optional timeout
 const fetchWebDta = (url, timeoutMs) => new Promise((resolve, reject) => {
 	if (timeoutMs) setTimeout(() => reject('Timeout fetching ' + url), timeoutMs);
 	https.get(url, resp => {
@@ -12,9 +13,10 @@ const fetchWebDta = (url, timeoutMs) => new Promise((resolve, reject) => {
 			try { resolve(JSON.parse(dta)); }
 			catch (err) { resolve(dta); }
 		});
-	})	
-});
+	})
+})
 
+// fetch JSON or other data from a given websocket with optional timeout
 const netCmd = (url, port, command, timeoutMs) => new Promise((resolve, reject) => {
 	let socket, timeoutTimer, dataStg = '';
 	const disconnectReject = function(reason) {
@@ -33,4 +35,7 @@ const netCmd = (url, port, command, timeoutMs) => new Promise((resolve, reject) 
 		catch (err) { resolve(dataStg); }			
 	});
 	socket.write(command);	
-});
+})
+
+// take an object and a string of the path and return the value at that location (from https://stackoverflow.com/questions/42206967/getting-a-field-from-a-json-object-using-a-address-string-in-javascript)
+const getValue = (obj, pathString) => pathString.replace(/\[/g, '.').replace(/\]/g, '').split('.').reduce( (obj, k) => (obj || {})[k], obj );
