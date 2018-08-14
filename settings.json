@@ -1,0 +1,390 @@
+{
+	"server": {
+		"https": false,
+		"address": "example.com/minspector/",
+		"port": 1455,
+		"name": "minspector",
+		"pingInterval": 10000,
+		"keepHistory": 10
+	},
+	"notifications": {
+		"sendgrid": {
+			"defaultSubject": "Minspector Warning",
+			"defaultMessage": "Minspector Warning!",
+			"emailTo": "to@gmail.com",
+			"emailFrom": "from@gmail.com",
+			"requestOptions": {
+				"host": "api.sendgrid.com",
+				"path": "/v3/mail/send",
+				"method": "POST",
+				"timeout": 10000,
+				"headers": {
+					"Authorization": "Bearer API_KEY_HERE",
+					"Content-Type": "application/json"
+				}
+			}
+		}
+	},
+	"endPoints": {
+		"miner1": {
+			"name": "miner1",
+			"description": "Miner 1",
+			"dataTimeoutMS": 1500,
+			"refreshMS": 300000,				
+			"socket": {
+				"url": "192.168.1.230",
+				"port": 4028,
+				"netCmnd": "{\"command\":\"stats\"}"
+			},
+			"fixedData": {
+				"plug": 1,
+				"type": "Antminer S9"
+			},
+			"variableData": {
+				"hashRate": {
+					"name": "hashRate",
+					"path": "STATS[1]['GHS av']",
+					"unit": " TH/s",
+					"multiplier": 0.001,
+					"lowWarning": 12.5,
+					"lowDanger": 10
+				},
+				"inTemp": {
+					"name": "inTemp",
+					"findRange": "max",
+					"path": "STATS[1]['temp?']",
+					"pathRangeMin": 0,
+					"pathRangeMax": 20,
+					"unit": " &#8457;",
+					"multiplier": 1.8,
+					"offset": 32,
+					"highWarning": 160,
+					"highDanger": 170
+				},
+				"outTemp": {
+					"name": "outTemp",
+					"findRange": "max",
+					"path": "STATS[1]['temp2_?']",
+					"pathRangeMin": 0,
+					"pathRangeMax": 20,
+					"unit": " &#8457;",
+					"multiplier": 1.8,
+					"offset": 32,
+					"highWarning": 180,
+					"highDanger": 190
+				},
+				"inFan": {
+					"name": "inFan",
+					"path": "STATS[1]['fan3']",
+					"unit": " RPM",
+					"calculateRangePercent": true
+				},
+				"outFan": {
+					"name": "outFan",
+					"path": "STATS[1]['fan6']",
+					"unit": " RPM",
+					"calculateRangePercent": true
+				}
+			}
+		},
+		"miner2": {
+			"name": "miner2",
+			"description": "Miner 2",
+			"dataTimeoutMS": 1500,
+			"refreshMS": 300000,				
+			"socket": {
+				"url": "192.168.1.231",
+				"port": 4028,
+				"netCmnd": "{\"command\":\"stats\"}"
+			},
+			"fixedData": {
+				"plug": 2,
+				"type": "Antminer T9"
+			},
+			"variableData": {
+				"hashRate": {
+					"name": "hashRate",
+					"path": "STATS[1]['GHS av']",
+					"unit": " TH/s",
+					"multiplier": 0.001,
+					"lowWarning": 9.5,
+					"lowDanger": 7
+				},
+				"inTemp": {
+					"name": "inTemp",
+					"findRange": "max",
+					"path": "STATS[1]['temp?']",
+					"pathRangeMin": 0,
+					"pathRangeMax": 20,
+					"unit": " &#8457;",
+					"multiplier": 1.8,
+					"offset": 32,
+					"highWarning": 160,
+					"highDanger": 170
+				},
+				"outTemp": {
+					"name": "outTemp",
+					"findRange": "max",
+					"path": "STATS[1]['temp2_?']",
+					"pathRangeMin": 0,
+					"pathRangeMax": 20,
+					"unit": " &#8457;",
+					"multiplier": 1.8,
+					"offset": 32,
+					"highWarning": 180,
+					"highDanger": 190
+				},
+				"inFan": {
+					"name": "inFan",
+					"path": "STATS[1]['fan3']",
+					"unit": " RPM",
+					"calculateRangePercent": true
+				},
+				"outFan": {
+					"name": "outFan",
+					"path": "STATS[1]['fan6']",
+					"unit": " RPM",
+					"calculateRangePercent": true
+				}
+			}
+		},
+		"miner3": {
+			"name": "miner3",
+			"description": "Miner 3",
+			"dataTimeoutMS": 1500,
+			"refreshMS": 300000,				
+			"socket": {
+				"url": "192.168.1.232",
+				"port": 4028,
+				"netCmnd": "{\"command\":\"stats\"}"
+			},
+			"fixedData": {
+				"plug": 3,
+				"type": "Antminer L3+"
+			},
+			"variableData": {
+				"hashRate": {
+					"name": "hashRate",
+					"path": "STATS[1]['GHS av']",
+					"unit": " MH/s",
+					"lowWarning": 490,
+					"lowDanger": 445
+				},
+				"inTemp": {
+					"name": "inTemp",
+					"findRange": "max",
+					"path": "STATS[1]['temp?']",
+					"pathRangeMin": 0,
+					"pathRangeMax": 20,
+					"unit": " &#8457;",
+					"multiplier": 1.8,
+					"offset": 32,
+					"highWarning": 160,
+					"highDanger": 170
+				},
+				"outTemp": {
+					"name": "outTemp",
+					"findRange": "max",
+					"path": "STATS[1]['temp2_?']",
+					"pathRangeMin": 0,
+					"pathRangeMax": 20,
+					"unit": " &#8457;",
+					"multiplier": 1.8,
+					"offset": 32,
+					"highWarning": 180,
+					"highDanger": 190
+				},
+				"inFan": {
+					"name": "inFan",
+					"path": "STATS[1]['fan1']",
+					"unit": " RPM",
+					"calculateRangePercent": true
+				},
+				"outFan": {
+					"name": "outFan",
+					"path": "STATS[1]['fan2']",
+					"unit": " RPM",
+					"calculateRangePercent": true
+				}
+			}
+		},		
+		"slushPool": {
+			"name": "slushPool",
+			"description": "Slush's Pool",
+			"dataTimeoutMS": 3500,
+			"refreshMS": 300000,
+			"updateAfter": "btcData",
+			"web": {
+				"url": "https://slushpool.com/accounts/profile/json/API_KEY_HERE"
+			},
+			"fixedData": {
+				"maxHashRate": 76.4
+			},
+			"variableData": {
+				"hashRate": {
+					"name": "hashRate",
+					"path": "hashrate",
+					"unit": " TH/s",
+					"multiplier": 0.000001,
+					"lowWarning": 75,
+					"lowDanger": 70,
+					"notification": {
+						"type": "sendgrid",
+						"frequencyMS": 30000000,
+						"timeout": 10000,
+						"lowThreshold": 73,
+						"message": "Slush Pool hashrate is low!",
+						"subject": "Minspector Warning - Slush Pool"
+					}
+				},
+				"unpaidReward": {
+					"name": "confirmedReward",
+					"path": "confirmed_reward",
+					"unit": " BTC"
+				},
+				"unconfirmedReward": {
+					"name": "unconfirmedReward",
+					"path": "unconfirmed_reward",
+					"unit": " BTC"
+				},
+				"sendThreshold": {
+					"name": "sendThreshold",
+					"path": "send_threshold",
+					"unit": " BTC"
+				}
+			}
+		},
+		"ltcPool": {
+			"name": "ltcPool",
+			"description": "Litecoin Pool",
+			"dataTimeoutMS": 3500,
+			"refreshMS": 300000,
+			"updateAfter": "btcData",
+			"web": {
+				"url": "https://www.litecoinpool.org/api?api_key=API_KEY_HERE"
+			},
+			"fixedData": {
+				"maxHashRate": 1008,
+				"sendThreshold": 0.1
+			},
+			"variableData": {
+				"hashRate": {
+					"name": "hashRate",
+					"path": "user.hash_rate",
+					"unit": " MH/s",
+					"multiplier": 0.001,
+					"lowWarning": 950,
+					"lowDanger": 850,
+					"notification": {
+						"type": "sendgrid",
+						"frequencyMS": 30000000,
+						"lowThreshold": 900,
+						"message": "LTC Pool hashrate is low!",
+						"subject": "Minspector Warning - LTC Pool"
+					}
+				},
+				"unpaidReward": {
+					"name": "unpaidReward",
+					"path": "user.unpaid_rewards",
+					"unit": " LTC"
+				},
+				"exchangeRate": {
+					"name": "exchangeRate",
+					"path": "market.ltc_usd",
+					"unit": "$"
+				},
+				"profitPerDay": {
+					"name": "profitPerDay",
+					"path": "user.expected_24h_rewards",
+					"unit": " LTC"
+				}
+			}
+		},
+		"weatherData": {
+			"name": "weatherData",
+			"description": "Current Weather and Forecast",
+			"dataTimeoutMS": 3500,
+			"refreshMS": 300000,
+			"web": {
+				"url": "https://api.darksky.net/forecast/API_KEY_HERE/32.12345,-86.54321"
+			},
+			"fixedData": {},
+			"variableData": {
+				"temp": {
+					"name": "temp",
+					"path": "currently.temperature",
+					"unit": " &#8457;",
+					"highWarning": 98,
+					"highDanger": 104
+				},
+				"humidity": {
+					"name": "humidity",
+					"path": "currently.humidity",
+					"unit": "%"
+				}
+			}
+		},
+		"btcData": {
+			"name": "btcData",
+			"description": "BTC price and profitability data",
+			"dataTimeoutMS": 3500,
+			"refreshMS": 1000000,
+			"web": {
+				"url": "https://alloscomp.com/bitcoin/calculator/json?hashrate=1000000000000"
+			},
+			"fixedData": {},
+			"variableData": {
+				"profPerHour": {
+					"name": "profPerTHHour",
+					"path": "dollars_per_hour",
+					"unit": "$"
+				},
+				"exchangeRate": {
+					"name": "exchangeRate",
+					"path": "exchange_rate",
+					"unit": "$"
+				}
+			}
+		},
+		"mqttData": {
+			"name": "mqttData",
+			"description": "Data from mqtt sensor",
+			"dataTimeoutMS": 2000,
+			"refreshMS": 300000,
+			"mqtt": {
+				"url": "tls://localhost:8883",
+				"options": {
+					"clientId": "minerUtils",
+					"username": "name",
+					"password": "pass",
+					"rejectUnauthorized": false
+				},
+				"subscriptionTopic": "topic/here",
+				"forceUpdateTopic": "topic/here",
+				"forceUpdateMessage": "updateMsg"
+			},
+			"fixedData": {},
+			"variableData": {
+				"temp": {
+					"name": "temp",
+					"path": "lastDta.temp",
+					"unit": " &#8457;",
+					"highWarning": 100,
+					"highDanger": 110
+				},
+				"humidity": {
+					"name": "humidity",
+					"path": "lastDta.humidity",
+					"unit": "%"
+				},
+				"current": {
+					"name": "current",
+					"path": "lastDta.current",
+					"unit": " Amps",
+					"highWarning": 45.5,
+					"highDanger": 50.2
+				}
+			}
+		}
+	}
+}
