@@ -57,6 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+#vscode
+.vscode
+
 # settings file, which could have passwords/api keys
 settings.json
 
