@@ -1,5 +1,4 @@
-# miner-utils
+# minspector
+A back end interface for getting data from sources, focused on cgminer, bfgminer, etc. as well as mining pools, weather data, mqtt, etc.
 
-Utilities to interface with mining APIs such as cgminer, bfgminer, and others
-
-**Work in progress - not useable yet!**
+A work in progress, but has decent functionality.
