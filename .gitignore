@@ -60,5 +60,7 @@ typings/
 # settings file, which could have passwords/api keys
 settings.json
 
-#page template file is user specific
+#page template is user specific
 pageTemplate.html
+clientScript.js
+bootstrap.min.css
