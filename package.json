@@ -1,0 +1,32 @@
+{
+	"name": "minspector",
+	"version": "0.0.0",
+	"description": "Miner monitoring and crypto information",
+	"main": "minspector.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/theminor/minspector.git"
+	},
+	"keywords": [
+		"mining",
+		"miner",
+		"monitor",
+		"cryptocurrency",
+		"bitcoin",
+		"cgminer",
+		"bfgminer"
+	],
+	"dependencies": {
+		"async-mqtt": "^1.0.0",
+		"ws": "^5.2.0"
+	},
+	"author": "theminor",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/theminor/minspector/issues"
+	},
+	"homepage": "https://github.com/theminor/minspector#readme"
+}
