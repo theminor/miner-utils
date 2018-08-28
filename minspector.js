@@ -39,7 +39,7 @@ function logErr(err, seperator, preMessage, simplify) {
 function sendGridNotification (message, subject) {
 	return new Promise((resolve, reject) => {
 		console.log('Sending sendgrid notification: ' + message);
-		let req = https.request(settings.notifications.sendgrid.requestOptions, response => {
+		let req = https.request(settings.notifications.sendgrid.requestOptions, res => {
 			if (res.statusCode >= 200 && res.statusCode < 300) resolve(true);
 			else reject('sendgrid notification for message "' + message + '" failed to return a successful status code (returned status code ' + res.statusCode + ').');
 		});
